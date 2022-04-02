@@ -1,0 +1,86 @@
+<component name="libraryTable">
+  <library name="veccy-libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.controls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.fxml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.graphics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.media.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javafx.web.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/Veccy-lib.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs/javadoc" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+      <root url="file://$PROJECT_DIR$/../libsAndBackups/veccy-libs" />
+    </NATIVE>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.base" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.controls" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.fxml" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.graphics" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.media" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.swing" />
+      <root url="jar://$PROJECT_DIR$/../libsAndBackups/veccy-libs/src.zip!/javafx.web" />
+    </SOURCES>
+  </library>
+</component>
