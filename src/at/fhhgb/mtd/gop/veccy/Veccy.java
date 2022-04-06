@@ -6,6 +6,7 @@ import at.fhhgb.mtd.gop.veccy.features.CircleFeature;
 import at.fhhgb.mtd.gop.veccy.features.LineFeature;
 import at.fhhgb.mtd.gop.veccy.features.PointFeature;
 import at.fhhgb.mtd.gop.veccy.features.RectangleFeature;
+import at.fhhgb.mtd.gop.veccy.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.shapes.Circle;
 import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
@@ -26,10 +27,19 @@ public class Veccy extends Application {
         // Create Shapes here!
         // Add Shapes via model.addShape(someShape);
 
-        model.addFeature(new RectangleFeature());
-        model.addFeature(new CircleFeature());
+        model.addFeature(new RectangleFeature(model));
+        model.addFeature(new CircleFeature(model));
         model.addFeature(new LineFeature());
         model.addFeature(new PointFeature());
+
+        Rectangle rectangle = new Rectangle(50, 50, 20, 20);
+        rectangle.setTransform(TransformFactory.createRotation(Math.PI/4));
+        model.addShape(rectangle);
+
+        Circle circle = new Circle(100, 100, 100);
+        circle.setFillColor(Color.BROWN);
+        circle.setTransform(TransformFactory.createScaling(2, 1).mult(TransformFactory.createTranslation(200, 100)));
+        model.addShape(circle);
 
 
 //        Rectangle rectangle = new Rectangle(50, 50, 20, 20);

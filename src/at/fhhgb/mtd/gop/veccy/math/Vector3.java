@@ -6,13 +6,13 @@ public class Vector3 {
     private double[] values = new double[3];
 
     public Vector3() {                       // Initialisiert values mit { 0.0, 0.0, 1.0 }
-        this.values [0] = 0.0;
-        this.values [1] = 0.0;
-        this.values [2] = 1.0;
+        this.values = new double[] {0.0, 0.0, 1.0};
     }
 
     public Vector3(double[] values) {       // Initialisiert this.values mit dem Parameter values (kopieren Sie die Werte!)
-        this.values = values;
+        this.values[0] = values[0];
+        this.values[1] = values[1];
+        this.values[2] = values[2];
     }
 
     public Vector3(Vector3 vector) {        // Initialisiert this.values mit den values aus dem Parameter vector (verwenden Sie this()!)

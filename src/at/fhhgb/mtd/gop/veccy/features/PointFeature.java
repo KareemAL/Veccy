@@ -20,13 +20,13 @@ public class PointFeature implements NamedFeature {
 
     @Override
     public void onMouseClick(int i, int i1) {
-        System.out.println(i);
-        System.out.println(i1);
+//        System.out.println(i);
+//        System.out.println(i1);
     }
 
     @Override
     public void onMouseDrag(int i, int i1) {
-        System.out.println(i);
-        System.out.println(i1);
+//        System.out.println(i);
+//        System.out.println(i1);
     }
 }

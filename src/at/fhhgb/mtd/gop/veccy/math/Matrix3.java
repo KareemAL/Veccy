@@ -27,7 +27,7 @@ public class Matrix3 {
                 result[i][j] = 0;
 
                 for (int k = 0; k < 3; k++) {
-                    result[i][j] += other[i][k] * this.values[k][j];
+                    result[i][j] += this.values[i][k] * other[k][j];
                 }                                       //end of k loop
             }
         }
