@@ -5,7 +5,7 @@ import at.fhhgb.mtd.gop.veccy.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Shape implements DrawableShape {
+public abstract class Shape implements DrawableShape {
 
     protected Vector3 position;
     protected Matrix3 transform;
@@ -13,6 +13,30 @@ public class Shape implements DrawableShape {
     protected Color strokeColor = Color.WHITE;
     private int x;
     private int y;
+    private boolean isSelected = false;
+    int[] positionToCoordsArray;
+
+    public void posVectorToCoords () {
+        for (int i = 0; i < 2; i++) {
+            positionToCoordsArray[i] = (int) position.getValues()[0];
+        }
+    }
+
+    public void setX(int x) {
+        this.x = positionToCoordsArray[0];
+    }
+
+    public void setY(int y) {
+        this.y = positionToCoordsArray[1];
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    public boolean getSelected() {
+        return isSelected;
+    }
 
     public int getX() {
         return x;
@@ -39,6 +63,39 @@ public class Shape implements DrawableShape {
         this.transform = transform;
     }
 
+    public abstract double[][] getCoordinates();
+
+    public Rectangle getBoundingBox() {
+        double MinX = getCoordinates()[0][0];
+        double MinY = getCoordinates()[1][0];
+        double MaxX = getCoordinates()[0][0];
+        double MaxY = getCoordinates()[1][0];
+        Rectangle ShapeBoundingBox;
+
+        for (int i = 0; i < getCoordinates()[0].length; i++) {
+            if (getCoordinates()[0][i] < MinX) {
+                MinX = getCoordinates()[0][i];
+            }
+        }
+        for (int i = 0; i < getCoordinates()[1].length; i++) {
+            if (getCoordinates()[1][i] < MinY) {
+                MinY = getCoordinates()[1][i];
+            }
+        }
+        for (int i = 0; i < getCoordinates()[1].length; i++) {
+            if (getCoordinates()[1][i] > MaxY) {
+                MaxY = getCoordinates()[1][i];
+            }
+        }
+        for (int i = 0; i < getCoordinates()[0].length; i++) {
+            if (getCoordinates()[0][i] > MaxX) {
+                MaxX = getCoordinates()[0][i];
+            }
+        }
+        ShapeBoundingBox = new Rectangle((int) MinX,(int) MinY,(int)(MaxX-MinX),(int)(MaxY-MinY));
+        return ShapeBoundingBox;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Shape) {
@@ -63,7 +120,16 @@ public class Shape implements DrawableShape {
     }
 
         @Override
-    public void draw(GraphicsContext graphicsContext) {     // Setzt die fillColor und strokeColor am ‚graphicsContext‘
+    public void draw(GraphicsContext graphicsContext) {
+        // Zeichne eine Bounding Box, sofern das Shape selektiert ist
+        if(getSelected()) {
+            Rectangle bb = getBoundingBox();
+            graphicsContext.setStroke(Color.CYAN);
+            graphicsContext.strokeRect(bb.getX(), bb.getY(),
+                    bb.getWidth(), bb.getHeight());
+        }
+
+        // Setzt die fillColor und strokeColor am ‚graphicsContext‘
         graphicsContext.setFill(fillColor);
         graphicsContext.setStroke(strokeColor);
 

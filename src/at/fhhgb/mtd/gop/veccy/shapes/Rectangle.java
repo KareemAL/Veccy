@@ -64,7 +64,8 @@ public class Rectangle extends Shape {
         return other.getX() == getX() && other.getY() == getY() && other.getWidth() == getWidth() && other.getHeight() == getHeight();
     }
 
-    private double[][] getCoordinates() {
+    @Override
+    public double[][] getCoordinates() {
         Vector3[] Coord = new Vector3[4];
         double[][] corners = new double[2][4];
         double[] savePoints = new double[3];

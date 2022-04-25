@@ -48,7 +48,8 @@ public class Circle extends Shape {
         this.radius = radius;
     }
 
-    private double[][] getCoordinates() {
+    @Override
+    public double[][] getCoordinates() {
         int Circleres = 32;
         Vector3[] Cords = new Vector3[Circleres];
         double[][] edge = new double[2][Circleres];

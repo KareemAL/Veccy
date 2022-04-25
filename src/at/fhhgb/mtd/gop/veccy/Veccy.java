@@ -2,13 +2,11 @@ package at.fhhgb.mtd.gop.veccy;
 
 // Author Kareem Al-Khalily s2110238002 15.03.2022
 
-import at.fhhgb.mtd.gop.veccy.features.CircleFeature;
-import at.fhhgb.mtd.gop.veccy.features.LineFeature;
-import at.fhhgb.mtd.gop.veccy.features.PointFeature;
-import at.fhhgb.mtd.gop.veccy.features.RectangleFeature;
+import at.fhhgb.mtd.gop.veccy.features.*;
 import at.fhhgb.mtd.gop.veccy.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.shapes.Circle;
+import at.fhhgb.mtd.gop.veccy.shapes.Polygon;
 import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -29,8 +27,13 @@ public class Veccy extends Application {
 
         model.addFeature(new RectangleFeature(model));
         model.addFeature(new CircleFeature(model));
-        model.addFeature(new LineFeature());
-        model.addFeature(new PointFeature());
+        model.addFeature(new LineFeature(model));
+        model.addFeature(new PointFeature(model));
+        model.addFeature(new PolygonFeature(model));
+        model.addFeature(new TextFeature(model));
+        model.addFeature(new PathFeature(model));
+
+        /*
 
         Rectangle rectangle = new Rectangle(50, 50, 20, 20);
         rectangle.setTransform(TransformFactory.createRotation(Math.PI/4));
@@ -40,6 +43,8 @@ public class Veccy extends Application {
         circle.setFillColor(Color.BROWN);
         circle.setTransform(TransformFactory.createScaling(2, 1).mult(TransformFactory.createTranslation(200, 100)));
         model.addShape(circle);
+
+         */ //Polygon Showoff
 
 
 //        Rectangle rectangle = new Rectangle(50, 50, 20, 20);

@@ -56,7 +56,8 @@ public class CircleFeature implements NamedFeature {
                 circ.addShape(currentCircle);
             }
             else {
-                currentCircle.setRadius((int)(Math.sqrt((x-OriginX)^2+(y-OriginY)^2)));
+                int distance = (int) Math.sqrt((x - OriginX) * (x - OriginX) + (y - OriginY) * (y - OriginY));
+                currentCircle.setRadius(distance);
             }
         }
     }

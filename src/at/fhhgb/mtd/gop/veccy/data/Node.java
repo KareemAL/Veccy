@@ -1,15 +1,9 @@
 package at.fhhgb.mtd.gop.veccy.data;
+import at.fhhgb.mtd.gop.veccy.shapes.Shape;
 
 public class Node {
     public Node next;
     public Node prev;
-    public int value;
+    public Shape value;
 
-    public Node() {
-        this(0);
-    }
-
-    public Node(int value) {
-        this.value = value;
-    }
 }

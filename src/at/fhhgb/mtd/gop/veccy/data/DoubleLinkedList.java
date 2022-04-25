@@ -1,15 +1,56 @@
 package at.fhhgb.mtd.gop.veccy.data;
 
-public class DoubleLinkedList {
+import at.fhhgb.mtd.gop.veccy.shapes.Shape;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
+public class DoubleLinkedList implements Iterable<Shape>{
     private Node head, tail;
+
+    // Entfernt Knoten an Stelle 'index'
+    public void remove(int index) {
+        if (index < 0 || index > size()-1) {
+            return;
+        }
+        else if (index == 0){
+            removeFirst();
+            return;
+            }
+        else if (index == size()-1) {
+            removeLast();
+            return;
+        }
+
+        Node node = this.getHead();
+        int i = 0;
+
+        while (i != index) {
+            node = node.next;
+            i++;
+        }
+
+        Node prevNode = node.prev;
+        Node nextNode = node.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        node = null;
+    }
 
     public DoubleLinkedList() {
         head = null;
         tail = null;
     }
 
+    public void clear () {
+        head = null;
+        tail = null;
+    }
+
     // Prepend fügt einen neuen Knoten am Anfang der Liste ein
-    public void prepend(int val) {
+    public void prepend(Shape val) {
         Node newNode = new Node();
         newNode.value = val;
 
@@ -29,7 +70,7 @@ public class DoubleLinkedList {
     }
 
     //Append fügt einen neuen Knoten am Ende der Liste ein
-    public void append(int val) {
+    public void append(Shape val) {
         Node newNode = new Node();
         newNode.value = val;
 
@@ -49,9 +90,9 @@ public class DoubleLinkedList {
         }
     }
 
-    public int get(int index) {
+    public Shape get(int index) throws IndexOutOfBoundsException {
         if(index < 0 || index > this.size()) {
-            return Integer.MIN_VALUE;
+            throw new IndexOutOfBoundsException("Index out of Bouds, weil bruh");
         }
         Node node = this.head;
         int currentIndex = 0;
@@ -63,7 +104,7 @@ public class DoubleLinkedList {
             currentIndex++;
             node = node.next;
         }
-        return Integer.MIN_VALUE;
+        throw new IndexOutOfBoundsException("Index out of Bouds, weil bruh");
     }
 
     //Gibt zurück, wie viele Elemente in der Liste liegen
@@ -76,120 +117,99 @@ public class DoubleLinkedList {
         }
         return x;
     }
+
+    public Shape removeFirst () throws NoSuchElementException {
+        Shape FinalShape = null;
+        if (this.head != null && this.head.next == null) {
+            FinalShape = this.head.value;
+            head = null;
+            tail = null;
+        }
+        else if (head != null) {
+            FinalShape = this.head.value;
+            this.head = this.head.next;
+            this.head.prev = null;
+        }
+        if (FinalShape == null) {
+            throw new NoSuchElementException("No such Element, bruh");
+        }
+        return FinalShape;
+    }
+
+    public Shape peekFirst () throws NoSuchElementException {
+        Shape FinalShape = null;
+        if (this.head != null) {
+            FinalShape = this.head.value;
+        }
+        if (FinalShape == null) {
+            throw new NoSuchElementException("No such Element, bruh");
+        }
+        return FinalShape;
+    }
+
+    public Shape removeLast () throws NoSuchElementException {
+    Shape FinalShape = null;
+        if (this.tail != null && this.tail.prev == null) {
+            FinalShape = this.tail.value;
+            head = null;
+            tail = null;
+        }
+        else if (tail != null) {
+            FinalShape = this.tail.value;
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+        }
+        if (FinalShape == null) {
+            throw new NoSuchElementException("No such Element, bruh");
+        }
+        return FinalShape;
+    }
+
+    public Shape peekLast () throws NoSuchElementException {
+        Shape FinalShape = null;
+        if (this.tail != null) {
+            FinalShape = this.tail.value;
+        }
+        if (FinalShape == null) {
+            throw new NoSuchElementException("No such Element, bruh");
+        }
+        return FinalShape;
+    }
+
+    public void reverse () {
+        Node currentNode = this.head;
+        while (currentNode != null) {
+            Node currentNode2 = currentNode.next;
+            currentNode.next = currentNode.prev;
+            currentNode.prev = currentNode2;
+            currentNode = currentNode2;
+        }
+        Node currentNode3 = this.head;
+        this.head = this.tail;
+        this.tail = currentNode3;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    @Override
+    public Iterator<Shape> iterator() {
+        return new DoubleLinkedListIterator(this.head);
+    }
+
+    @Override
+    public void forEach(Consumer<? super Shape> action) {
+        Iterable.super.forEach(action);
+    }
+
+    @Override
+    public Spliterator<Shape> spliterator() {
+        return Iterable.super.spliterator();
+    }
+
 }
-
-/* Oben in Uebungsstunde - Unten Selbst */
-
-//package at.fhhgb.mtd.gop.veccy.data;
-//
-//public class DoubleLinkedList {
-//    private Node head, tail;
-//
-//    public DoubleLinkedList() {
-//        this.head = this.tail = null;
-//    }
-//
-//    public DoubleLinkedList(int... values) {
-//        this();
-//        for (int i : values) this.append(i);
-//    }
-//
-//    public DoubleLinkedList(DoubleLinkedList node) {
-//        this.head = node.head;
-//        this.tail = node.tail;
-//    }
-//
-//    public void clear() {
-//        this.head = this.tail = null;
-//    }
-//
-//    public void prepend(int val) {
-//        Node newNode = new Node();
-//        if (this.head == null) {
-//            this.tail = newNode;
-//        } else {
-//            this.head.prev = newNode;
-//            newNode.next = this.head;
-//        }
-//        this.head = newNode;
-//    }
-//
-//    public void append(int val) {
-//        Node newNode = new Node();
-//        if (this.tail == null) {
-//            this.head = newNode;
-//        } else {
-//            this.tail.next = newNode;
-//            newNode.prev = this.tail;
-//        }
-//        this.tail = newNode;
-//    }
-//
-//    public int get(int index) {
-//        if (this.head == null || this.tail == null) return Integer.MIN_VALUE;
-//        Node current = this.head;
-//        if (index > 0) {
-//            for (int i = 0; i < index; i++) current = current.next;
-//        } else if (index < 0) {
-//            current = tail;
-//            for (int i = 0; i > index; i--) current = current.prev;
-//        }
-//        return current.value;
-//    }
-//
-//    public int removeFirst() {
-//        if (this.head == null) return Integer.MIN_VALUE;
-//        int value = this.head.value;
-//        this.head = this.head.next;
-//        this.head.prev = null;
-//        return value;
-//    }
-//
-//    public int peekFirst() {
-//        return head == null ? Integer.MIN_VALUE : this.head.value;
-//    }
-//
-//    public int removeLast() {
-//        if (tail == null) return Integer.MIN_VALUE;
-//        int value = this.tail.value;
-//        this.tail = this.tail.prev;
-//        this.tail.next = null;
-//        return value;
-//    }
-//
-//    public int peekLast() {
-//        return tail == null ? Integer.MIN_VALUE : this.tail.value;
-//    }
-//
-//    public int size() {
-//        Node nodeSize = this.head;
-//        int inc;
-//        for (inc = 0; nodeSize != null; inc++) nodeSize = nodeSize.next;
-//        return inc;
-//    }
-//
-//    public void reverse() {
-//        DoubleLinkedList reversedNode = new DoubleLinkedList();
-//        for (int i = 0; i < this.size(); i++) reversedNode.prepend(this.get(i));
-//        this.replaceNode(reversedNode);
-//    }
-//
-//    public void replaceNode(DoubleLinkedList node) {
-//        this.head = node.head;
-//        this.tail = node.tail;
-//    }
-//
-//    public int[] getAll() {
-//        int[] arnold = new int[this.size()];
-//        for (int i = 0; i < this.size(); i++) arnold[i] = this.get(i);
-//        return arnold;
-//    }
-//
-//    public Node getHead() {
-//        return head;
-//    }
-//
-//    public Node getTail() {
-//        return tail;
-//    }
-//}
