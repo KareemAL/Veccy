@@ -39,6 +39,16 @@ public class Point extends Shape{
     }
 
     @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Point @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        return sb.toString();
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.fillOval(super.getX(), super.getY(), 3,3 );

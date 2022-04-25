@@ -2,12 +2,14 @@ package at.fhhgb.mtd.gop.veccy;
 
 // Author Kareem Al-Khalily s2110238002 15.03.2022
 
+import at.fhhgb.mtd.gop.veccy.data.DoubleLinkedList;
 import at.fhhgb.mtd.gop.veccy.features.*;
 import at.fhhgb.mtd.gop.veccy.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.shapes.Circle;
 import at.fhhgb.mtd.gop.veccy.shapes.Polygon;
 import at.fhhgb.mtd.gop.veccy.shapes.Rectangle;
+import at.fhhgb.mtd.gop.veccy.shapes.Shape;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
@@ -21,6 +23,25 @@ public class Veccy extends Application {
     public void start(Stage stage) throws Exception {
         VeccyGUI veccyGUI = new VeccyGUI(stage);
         CanvasModel model = veccyGUI.getModel();
+
+        DoubleLinkedList shapes = new DoubleLinkedList();
+
+        // Akzeptiert eine Funktion, die einen int index als Parameter akzeptiert.
+        model.setCurrentlySelectedShapeHandler(index -> {
+            for (Shape shape :
+                    shapes) {
+                shape.setSelected(false);
+            }
+            shapes.get(index).setSelected(true);
+        });
+        // Akzeptiert eine Funktion, die ein DrawableShape Objekt als Parameter akzeptiert.
+        model.setShapeCreationHandler(shape -> {
+            shapes.append((Shape)shape);
+        });
+        // Akzeptiert eine Funktion, die einen int index als Parameter akzeptiert.
+        model.setShapeDeletionHandler(index -> {
+            model.removeShape(shapes.remove(index));
+        });
 
         // Create Shapes here!
         // Add Shapes via model.addShape(someShape);

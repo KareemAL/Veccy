@@ -13,8 +13,6 @@ public class Line extends Shape{
     private int x2;
     private int y2;
 
-    private Vector3[] LinePoints = new Vector3[0];
-
     public Line(int x1, int y1, int x2, int y2) {
         super(x1, y1);
         this.x2 = x2;
@@ -48,30 +46,30 @@ public class Line extends Shape{
 
     @Override
     public double[][] getCoordinates() {
-        Vector3[] Cords = new Vector3[LinePoints.length];
-        double[][] edge = new double[2][LinePoints.length];
-        double[] savePoints = new double[3];
-        savePoints[2] = 1;
-        for (int i = 0; i < LinePoints.length; i++) {
-            edge[0][i] = this.LinePoints[i].getValues()[0];
-            edge[1][i] = this.LinePoints[i].getValues()[1];
-            savePoints[0] = edge[0][i];
-            savePoints[1] = edge[1][i];
-            Cords[i] = new Vector3(savePoints);
-        }
+        Vector3[] Cords = new Vector3[2];
+        double[][] edge = new double[2][2];
+        edge[0][0] = this.getX();
+        edge[1][0] = this.getY();
+        edge[0][1] = this.x2;
+        edge[1][1] = this.y2;
         Matrix3 ToOrigin = TransformFactory.createTranslation(-getX(), -getY());
         Matrix3 FromOrigin = TransformFactory.createTranslation(getX(), getY());
         if (this.transform != null) {
-            for (int i = 0; i < LinePoints.length; i++) {
+            for (int i = 0; i < 2; i++) {
                 Cords[i] = FromOrigin.mult(transform).mult(ToOrigin).mult(Cords[i]);
             }
         }
-        for (int i = 0; i < LinePoints.length; i++) {
-            savePoints = Cords[i].getValues();
-            edge[0][i] = savePoints[0];
-            edge[1][i] = savePoints[1];
-        }
         return edge;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Line @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        return sb.toString();
     }
 
     @Override

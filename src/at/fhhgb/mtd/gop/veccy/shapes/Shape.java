@@ -11,8 +11,6 @@ public abstract class Shape implements DrawableShape {
     protected Matrix3 transform;
     protected Color fillColor = Color.WHITE;
     protected Color strokeColor = Color.WHITE;
-    private int x;
-    private int y;
     private boolean isSelected = false;
     int[] positionToCoordsArray;
 
@@ -23,11 +21,11 @@ public abstract class Shape implements DrawableShape {
     }
 
     public void setX(int x) {
-        this.x = positionToCoordsArray[0];
+        this.position = new Vector3(new double[]{x, getY(), 1.0});
     }
 
     public void setY(int y) {
-        this.y = positionToCoordsArray[1];
+        this.position = new Vector3(new double[]{getX(), y, 1.0});
     }
 
     public void setSelected(boolean selected) {
@@ -39,16 +37,15 @@ public abstract class Shape implements DrawableShape {
     }
 
     public int getX() {
-        return x;
+        return (int)position.getValues()[0];
     }
 
     public int getY() {
-        return y;
+        return (int)position.getValues()[1];
     }
 
     public Shape(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.position = new Vector3(new double[]{x, y, 1.0});
     }
 
     public void setFillColor(Color c) {

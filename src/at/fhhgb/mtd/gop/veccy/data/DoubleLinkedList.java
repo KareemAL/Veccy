@@ -11,17 +11,15 @@ public class DoubleLinkedList implements Iterable<Shape>{
     private Node head, tail;
 
     // Entfernt Knoten an Stelle 'index'
-    public void remove(int index) {
+    public Shape remove(int index) {
         if (index < 0 || index > size()-1) {
-            return;
+            return null;
         }
         else if (index == 0){
-            removeFirst();
-            return;
+            return removeFirst();
             }
         else if (index == size()-1) {
-            removeLast();
-            return;
+            return removeLast();
         }
 
         Node node = this.getHead();
@@ -36,7 +34,7 @@ public class DoubleLinkedList implements Iterable<Shape>{
         Node nextNode = node.next;
         prevNode.next = nextNode;
         nextNode.prev = prevNode;
-        node = null;
+        return node.value;
     }
 
     public DoubleLinkedList() {

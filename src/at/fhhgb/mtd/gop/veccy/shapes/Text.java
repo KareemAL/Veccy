@@ -26,6 +26,18 @@ public class Text extends Shape{
     }
 
     @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Text @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        sb.append(" | ");
+        sb.append(currentText);
+        return sb.toString();
+    }
+
+    @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
         graphicsContext.fillText(this.currentText, super.getX(), super.getY());
