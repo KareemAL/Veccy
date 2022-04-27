@@ -79,6 +79,18 @@ public class Path extends Shape {
         return edge;
     }
 
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("Path @ ");
+        sb.append(position.getValues()[0]);
+        sb.append("/");
+        sb.append(position.getValues()[1]);
+        sb.append(" | vertecies: ");
+        sb.append(Pathpoints.length);
+        return sb.toString();
+    }
+
     public void AddPoints(Vector3[] NewClick) {
         this.Pathpoints = joinPoints(this.Pathpoints, NewClick);
     }

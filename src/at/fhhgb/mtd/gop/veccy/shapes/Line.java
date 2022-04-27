@@ -46,20 +46,31 @@ public class Line extends Shape{
 
     @Override
     public double[][] getCoordinates() {
-        Vector3[] Cords = new Vector3[2];
+        Vector3[] cords = new Vector3[2];
+        cords[0] = position;
+        cords[1] = new Vector3(new double[] {x2, y2, 1.0});
         double[][] edge = new double[2][2];
-        edge[0][0] = this.getX();
-        edge[1][0] = this.getY();
-        edge[0][1] = this.x2;
-        edge[1][1] = this.y2;
         Matrix3 ToOrigin = TransformFactory.createTranslation(-getX(), -getY());
         Matrix3 FromOrigin = TransformFactory.createTranslation(getX(), getY());
         if (this.transform != null) {
             for (int i = 0; i < 2; i++) {
-                Cords[i] = FromOrigin.mult(transform).mult(ToOrigin).mult(Cords[i]);
+                cords[i] = FromOrigin.mult(transform).mult(ToOrigin).mult(cords[i]);
             }
         }
+        edge[0][0] = cords[0].getValues()[0];
+        edge[1][0] = cords[0].getValues()[1];
+        edge[0][1] = cords[1].getValues()[0];
+        edge[1][1] = cords[1].getValues()[1];
         return edge;
+    }
+
+    @Override
+    public void movePosition(int x, int y) {
+        super.movePosition(x, y);
+        int deltaX2 = x - getX();
+        int deltaY2 = y - getY();
+        setX2(x2 + deltaX2);
+        setY2(y2 + deltaY2);
     }
 
     @Override
@@ -75,6 +86,7 @@ public class Line extends Shape{
     @Override
     public void draw(GraphicsContext graphicsContext) {
         super.draw(graphicsContext);
-        graphicsContext.strokeLine(super.getX(), super.getY(),this.x2, this.y2);
+        double[][] coords = getCoordinates();
+        graphicsContext.strokePolygon(coords[0], coords[1], coords[1].length);
     }
 }

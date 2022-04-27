@@ -1,6 +1,7 @@
 package at.fhhgb.mtd.gop.veccy.shapes;
 
 import at.fhhgb.mtd.gop.veccy.math.Matrix3;
+import at.fhhgb.mtd.gop.veccy.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.math.Vector3;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -114,6 +115,10 @@ public abstract class Shape implements DrawableShape {
         sb.append("/");
         sb.append(position.getValues()[1]);
         return sb.toString();
+    }
+
+    public void movePosition(int x, int y) {
+        this.position = TransformFactory.createTranslation(x - getX(), y - getY()).mult(position);
     }
 
         @Override

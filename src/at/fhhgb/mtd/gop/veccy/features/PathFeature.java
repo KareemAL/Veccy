@@ -31,7 +31,6 @@ public class PathFeature implements NamedFeature {
         System.out.println("Deselected Path");
         if (selected) {
             if (currentPath != null) {
-                path.addShape(currentPath);
                 currentPath = null;
             }
         }
@@ -43,12 +42,12 @@ public class PathFeature implements NamedFeature {
         if (selected) {
             if (currentPath == null) {
                 currentPath = new Path(x, y);
+                currentPath.setFillColor(path.getCurrentFillColor());
+                currentPath.setStrokeColor(path.getCurrentStrokeColor());
+                path.addShape(currentPath);
             }
             Vector3[] NewPoint = new Vector3[]{new Vector3(new double[]{(double)(x), (double)(y), 1.0})};
             currentPath.AddPoints(NewPoint);
-            currentPath.setFillColor(path.getCurrentFillColor());
-            currentPath.setStrokeColor(path.getCurrentStrokeColor());
-            path.addShape(currentPath);
         }
     }
 

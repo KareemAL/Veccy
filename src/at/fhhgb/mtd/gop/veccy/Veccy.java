@@ -43,6 +43,8 @@ public class Veccy extends Application {
             model.removeShape(shapes.remove(index));
         });
 
+        model.getCurrentlySelectedShapeIndex();
+
         // Create Shapes here!
         // Add Shapes via model.addShape(someShape);
 
@@ -53,6 +55,10 @@ public class Veccy extends Application {
         model.addFeature(new PolygonFeature(model));
         model.addFeature(new TextFeature(model));
         model.addFeature(new PathFeature(model));
+
+        model.addFeature(new TranslateFeature(model, shapes));
+        model.addFeature(new RotateFeature(model, shapes));
+        model.addFeature(new TransformFeature(model, shapes));
 
         /*
 

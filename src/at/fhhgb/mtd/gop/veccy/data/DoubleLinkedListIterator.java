@@ -16,7 +16,7 @@ public class DoubleLinkedListIterator implements Iterator<Shape> {
 
     @Override
     public boolean hasNext() {
-        if (this.currentNode.next != null) {
+        if (this.currentNode != null) {
             return true;
         }
         return false;
@@ -25,7 +25,7 @@ public class DoubleLinkedListIterator implements Iterator<Shape> {
     @Override
     public Shape next() {
         Shape helpShape = currentNode.value;
-        if (currentNode.next != null) {
+        if (currentNode != null) {
             this.currentNode = this.currentNode.next;
         }
         return helpShape;

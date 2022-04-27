@@ -32,7 +32,6 @@ public class PolygonFeature implements NamedFeature {
         System.out.println("Deselected Polygon");
         if (selected) {
             if (currentPolygon != null) {
-                poly.addShape(currentPolygon);
                 currentPolygon = null;
             }
         }
@@ -44,12 +43,12 @@ public class PolygonFeature implements NamedFeature {
         if (selected) {
             if (currentPolygon == null) {
                 currentPolygon = new Polygon(x, y);
+                currentPolygon.setFillColor(poly.getCurrentFillColor());
+                currentPolygon.setStrokeColor(poly.getCurrentStrokeColor());
+                poly.addShape(currentPolygon);
             }
             Vector3[] NewPoint = new Vector3[]{new Vector3(new double[]{(double)(x), (double)(y), 1.0})};
             currentPolygon.AddPoints(NewPoint);
-            currentPolygon.setFillColor(poly.getCurrentFillColor());
-            currentPolygon.setStrokeColor(poly.getCurrentStrokeColor());
-            poly.addShape(currentPolygon);
         }
     }
 
