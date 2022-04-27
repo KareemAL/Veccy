@@ -1,6 +1,7 @@
 package at.fhhgb.mtd.gop.veccy.features;
 
 import at.fhhgb.mtd.gop.veccy.data.DoubleLinkedList;
+import at.fhhgb.mtd.gop.veccy.math.Matrix3;
 import at.fhhgb.mtd.gop.veccy.math.TransformFactory;
 import at.fhhgb.mtd.gop.veccy.model.CanvasModel;
 import at.fhhgb.mtd.gop.veccy.model.NamedFeature;
@@ -12,8 +13,6 @@ public class TransformFeature implements NamedFeature {
     private CanvasModel model;
     private boolean selected = false;
     private DoubleLinkedList shapes;
-
-    TransformConfig config = BlockingTransformInputDialog.requestConfigInput();
 
     public TransformFeature(CanvasModel model, DoubleLinkedList shapes) {
         this.model = model;
@@ -40,17 +39,19 @@ public class TransformFeature implements NamedFeature {
     @Override
     public void onMouseClick(int i, int i1) {
         if (selected && shapes.get(model.getCurrentlySelectedShapeIndex()) != null) {
+            Matrix3 transform = new Matrix3();
+            TransformConfig config = BlockingTransformInputDialog.requestConfigInput();
             Shape translShape = shapes.get(model.getCurrentlySelectedShapeIndex());
-            translShape.setTransform(TransformFactory.createRotation(config.getRotation()));
-            translShape.setTransform(TransformFactory.createScaling(config.getScaleX(), config.getScaleY()));
+            transform = (TransformFactory.createScaling(config.getScaleX(), config.getScaleY())).mult(transform);
+            transform = (TransformFactory.createRotation(config.getRotation())).mult(transform);
             if (config.isMirrorX()) {
-                translShape.setTransform(TransformFactory.createHorizontalMirroring());
+                transform = (TransformFactory.createHorizontalMirroring()).mult(transform);
             }
             if (config.isMirrorY()) {
-                translShape.setTransform(TransformFactory.createVerticalMirroring());
+                transform = (TransformFactory.createVerticalMirroring()).mult(transform);
             }
+            translShape.setTransform(transform);
         }
-        selected = false;
     }
 
     @Override
